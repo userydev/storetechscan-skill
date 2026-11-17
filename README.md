@@ -1,6 +1,6 @@
 # StoreTechScan agent skill
 
-`SKILL.md` teaches an AI agent how to use [StoreTechScan](https://storetechscan.ytriple.dev): bulk-check ecommerce store domains for storefront platform, installed apps, public Shopify catalog prices, prospect fit and public role contacts, over REST or MCP, with a 25 domains/day free preview that needs no key.
+`SKILL.md` teaches an AI agent how to use [StoreTechScan](https://storetechscan.ytriple.dev): bulk-check ecommerce store domains for storefront platform, installed apps, public Shopify catalog prices, prospect fit and public role contacts, over REST or MCP, with a one-time 25-domain free trial per IP that needs no key (first credit pack purchase adds +25 bonus credits: Starter $9 = 525).
 
 The file is a mirror of the live version at <https://storetechscan.ytriple.dev/skill.md>, which is generated from the server and is always the source of truth.
 

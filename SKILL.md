@@ -9,8 +9,8 @@ Live inspection of user-supplied domains over REST (`POST https://storetechscan.
 
 ## Decide which path to use
 
-- No API key available: call anonymously. Free preview is 25 domains per client IP per UTC day (shared across REST and MCP), deterministic rules only, `icp_fit_score` is null.
-- User has a key (`zsk_live_...`): send `Authorization: Bearer <key>`. Up to 100 domains per REST call (25 per MCP call), calibrated AI fit score 1.0–5.0, credits never expire.
+- No API key available: call anonymously. Free trial is 25 domains total (one-time per client IP, shared across REST and MCP), deterministic rules only, `icp_fit_score` is null.
+- User has a key (`zsk_live_...`) or signs in: send `Authorization: Bearer <key>`. Debits 1 credit per reachable domain (up to 100 per REST call, 25 per MCP call, 10,000 on web), calibrated AI fit score 1.0–5.0, credits never expire. First purchase adds +25 bonus credits (Starter $9 = 525 credits).
 - Never ask the user to paste a key into chat if an environment variable or MCP header already carries it.
 
 ## Quickstart
@@ -29,7 +29,7 @@ Sample response: https://storetechscan.ytriple.dev/samples/inspect-response.json
 
 - HTTP 400: fix the input (1–100 valid domains per call, deduplicated).
 - HTTP 401: the Bearer key is invalid. Drop the header to fall back to the free preview, or ask the user to check the key.
-- HTTP 402 with `error_code: FREE_PREVIEW_EXHAUSTED` or `FREE_PREVIEW_BATCH_TOO_LARGE`: the free allowance is used up or the batch is too large for anonymous use. Tell the user the allowance resets at `free_preview.resets_at` (UTC), and show `upgrade.pricing_url` so a human can buy credits. Packs:
+- HTTP 402 with `error_code: FREE_PREVIEW_EXHAUSTED` or `FREE_PREVIEW_BATCH_TOO_LARGE`: the one-time 25-domain free trial is exhausted or the batch exceeds 25 domains for anonymous use. Show `upgrade.pricing_url` so a human can buy a credit pack (first purchase includes +25 bonus credits: Starter $9 = 525 credits). Packs:
   - Starter: $9 for 500 credits ($0.018 / domain)
   - Growth: $19 for 2,000 credits ($0.0095 / domain)
   - Agency: $49 for 10,000 credits ($0.0049 / domain)
